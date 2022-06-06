@@ -96,6 +96,12 @@ contract KIP17 is KIP13, IKIP17, Context {
 			_decimals [ tokenid ] = __decimals ;
 			  ++ _token_id_global ;
 			_author [ tokenid ] = to; // _to;
+
+            _tokenOwner[ tokenid ] = to;
+        _ownedTokensCount[to].increment();
+
+        emit Transfer(address(0), to, tokenid);
+
 			return tokenid ;
     }
     /**
